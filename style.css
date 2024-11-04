@@ -1,0 +1,308 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#car-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.car-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.car-card h2 {
+    font-size: 1em;
+    margin: 0;
+    color: #333;
+}
+
+.car-card .stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: #555;
+    font-size: 1em;
+}
+
+.stat-value {
+    font-size: 1em;
+    color: #333;
+}
+
+@media (max-width: 760px) {
+    .car-card {
+        font-size: 13px;
+    }
+    .car-card h2 {
+        font-size: .9em;
+    }
+}
+
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    animation: slideUpFadeIn 0.4s ease-out;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-car-image {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+#modal-car-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+#modal-car-stats p {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #333;
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#race-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.car-image-container {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.car-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Tabs Style */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tab-button {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tab-button.active {
+    background-color: #f0f2f5;
+    border: #f0f2f5;
+}
+
+.tab-button:hover {
+    background-color: #f0f2f5;
+    border: #f0f2f5;
+}
+
+/* Dropdown Style */
+.dropdown {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 200px;
+    transition: box-shadow 0.3s;
+}
+
+.dropdown:focus {
+    outline: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Race Selection Styling */
+.race-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 20px;
+}
+
+.race-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.race-car-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.race-car-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: #00FF00;
+}
+
+/* Card Theme for Tab Content */
+.tab-content {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+/* Styling for the Tournament Bracket */
+.tournament-round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tournament-match {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.car {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    text-align: center;
+    width: 80px;
+}
+
+.car:hover {
+    background-color: #ececec;
+}
+
+.vs {
+    margin: 0 10px;
+}
+
+.tournament-lines {
+    position: absolute;
+    top: 0;
+    left: 90px; /* Position lines between the two cars */
+    width: 2px; /* Line width */
+    background-color: #000; /* Line color */
+}
+
+.line {
+    width: 2px;
+    background-color: #000;
+    position: relative;
+}

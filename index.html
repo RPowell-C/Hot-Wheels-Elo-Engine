@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hot Wheels Rankings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rankings</h1>
+
+
+        <div id="tabs">
+            <button id="stats-tab" class="tab-button">Rankings</button>
+            <button id="races-tab" class="tab-button">Race</button>
+            <button id="grand-slam-tab" class="tab-button">Grand Slam</button>
+        </div>
+
+        <!-- Stats section -->
+        <div id="stats-section">
+            <div id="car-list">
+        </div>
+    </div>
+
+    <div id="bracket-container">
+        <div id="grand-slam-section" class="tab-content" style="display: none;">
+            <h2>WIP</h2>
+            <div id="grand-slam-bracket"></div>
+        </div>
+    </div>
+
+    <!-- Race Section -->
+    <div id="races-section" style="display: none;">
+        <h2>Select Two Cars</h2>
+        <label for="car1-select">Car 1:</label>
+        <select id="car1-select" class="dropdown"></select>
+        <label for="car2-select">Car 2:</label>
+        <select id="car2-select" class="dropdown"></select>
+
+        <div id="race-container">
+            <div id="car1-image-container" class="car-image-container">
+                <img id="car1-image" src="" alt="" />
+            </div>
+            <div id="car2-image-container" class="car-image-container">
+                <img id="car2-image" src="" alt="" />
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal for detailed car info -->
+    <div id="car-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-car-name">Car Name</h2>
+            <img id="modal-car-image" src="" alt="Car Image" />
+            <div id="modal-car-stats">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
