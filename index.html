@@ -10,15 +10,27 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Rankings</h1>
-
-
+    <div class="tabs-section">
         <div id="tabs">
             <button id="stats-tab" class="tab-button">Rankings</button>
             <button id="races-tab" class="tab-button">Race</button>
             <button id="grand-slam-tab" class="tab-button">Grand Slam</button>
+            <button id="admin-login-button" class="admin-button">Admin Panel</button>
         </div>
+    </div>
+    <div class="container">
+        <h1>Rankings</h1>
+
+        <!-- admin login page -->
+        <div id="admin-login" style="display: none;">
+            <h1>Admin Login</h1>
+            <div id="admin-login-inputs">
+                <input id="username" class="username"></input>
+                <input id="password" class="password" type="password"></input>
+                <button id="submit-button" class="submit"> </button>
+            </div>
+        </div>
+
 
         <!-- Stats section -->
         <div id="stats-section">
@@ -64,6 +76,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="src/main.ts" type=module></script>
 </body>
 </html>

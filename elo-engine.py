@@ -2,6 +2,8 @@ import pandas
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.middleware.proxy_fix import ProxyFix
+import hashlib
+import json
 
 
 app = Flask(__name__)
@@ -33,8 +35,6 @@ def changeELO(car_name, car2_name, winner):
 
     Ea = 1 / (1 + 10 ** ((car2_elo - car1_elo) / 400))
     Eb = 1 / (1 + 10 ** ((car1_elo - car2_elo) / 400))
-
-
 
     car1Rating = 0
     car2Rating = 0
@@ -78,7 +78,7 @@ def changeELO(car_name, car2_name, winner):
         Car2PeakELO = Car2PeakELO.iloc[0]
         # Highest ELO
         if car2Rating > Car2PeakELO:
-            df.loc[df['Cars'] == car2_name, 'Peak_ELO'] = int(car1Rating)
+            df.loc[df['Cars'] == car2_name, 'Peak_ELO'] = int(car2Rating)
         df.loc[df['Cars'] == car_name,'Losses'] = df.loc[df['Cars'] == car_name, "Losses"] + 1
     # write it back
         df.to_csv('cars.csv', index=False)
@@ -124,6 +124,27 @@ def top25():
     top_cars = df.sort_values(by='ELO', ascending=False)
     top_cars_data = top_cars.to_dict(orient='records')
     return jsonify(top_cars_data)
+@app.route('/order', methods=['GET'])
+def x():
+    neat_data = df.to_dict(orient='records')
+    return jsonify(neat_data)
+@app.route('/auth', methods=['POST'])
+def auth():
+    m = hashlib.sha256()
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    newpass = password + "\n"
+    m.update(newpass.encode())
+    print(m.hexdigest())
+    with open("auth.json", "r") as file:
+        data = json.load(file)
+    for thing in data:
+        if username in data[thing]:
+            if m.hexdigest() == data[thing][username]["pass1"]:
+                print("login success")
+                return jsonify({"Message": m.hexdigest()})
+    return jsonify({"Message": "login success"})
 
 
 if __name__ == '__main__':
