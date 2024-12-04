@@ -234,20 +234,6 @@ h1 {
 }
 
 
-.small-menu {
-    height: 100%;
-    width: 2%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    padding-top: 20px;
-    border-right: 1px #ffffff;
-    border-radius: 3px;
-}
-
 .tabs {
     display: flex;
     gap: 10px;
@@ -258,12 +244,30 @@ h1 {
     background-color: #ffffff;
     border: 0px solid black;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    justify-content: space-between;
     margin-bottom: 10px;
-    margin-top: 5%;
-    align-items: center;
-    width: 15%;
+    margin-right: 3%;
+}
+
+
+.menu-button { 
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
     margin-left: 5%;
+    margin-top: 5%;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+}
+
+
+.menu-button:hover {
+    cursor: pointer;
 }
 
 .menu-close-button:hover {

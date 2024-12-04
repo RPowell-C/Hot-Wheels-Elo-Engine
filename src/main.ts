@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const modalCarName = document.getElementById("modal-car-name") as HTMLDivElement;
     const modalCarStats = document.getElementById("modal-car-stats") as HTMLDivElement;
     const tabSection = document.getElementById("tabs-section") as HTMLDivElement;
-    const menu = document.getElementById("small-menu") as HTMLDivElement;
     // select thingies
     const car1Select = document.getElementById("car1-select") as HTMLSelectElement;
     const car2Select = document.getElementById("car2-select") as HTMLSelectElement;
@@ -175,11 +174,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         adminSection.style.display = "block";
     });
     menuButton.addEventListener("click", () => {
-        menu.style.display = "none";
         tabSection.style.display = "block";
     }); 
     menuCloseButton.addEventListener("click", () => {
-        menu.style.display = "block";
         tabSection.style.display = "none";
     });
 
