@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const modal = document.getElementById("car-modal") as HTMLDivElement;
     const modalCarName = document.getElementById("modal-car-name") as HTMLDivElement;
     const modalCarStats = document.getElementById("modal-car-stats") as HTMLDivElement;
-    const closeButton = document.querySelector(".close-button") as HTMLButtonElement;
+    const tabSection = document.getElementById("tabs-section") as HTMLDivElement;
+    const menu = document.getElementById("small-menu") as HTMLDivElement;
     // select thingies
     const car1Select = document.getElementById("car1-select") as HTMLSelectElement;
     const car2Select = document.getElementById("car2-select") as HTMLSelectElement;
@@ -38,6 +39,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const adminTab = document.getElementById("admin-login-button") as HTMLButtonElement;
     // Buttons
     const submitButton = document.getElementById("submit-button") as HTMLButtonElement;
+    const menuButton = document.getElementById("menu-button") as HTMLButtonElement;
+    const closeButton = document.querySelector(".close-button") as HTMLButtonElement;
+    const menuCloseButton = document.getElementById("menu-close-button") as HTMLButtonElement;
+
+
     interface Car {
         Cars: string;
         ELO: number;
@@ -53,8 +59,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // declaring an empty array named cars
     try {
         // getting the API response from the flask server
-        const response = await fetch("http://192.168.1.198:5000/top25");
-        const response2 = await fetch("http://192.168.1.198:5000/order");
+        const response = await fetch("http://192.168.1.77:5000/top25");
+        const response2 = await fetch("http://192.168.1.77:5000/order");
 
         // check response
         if (!response.ok) throw new Error("Network response was not ok");
@@ -168,10 +174,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         grandSlamSection.style.display = "none";
         adminSection.style.display = "block";
     });
-    
+    menuButton.addEventListener("click", () => {
+        menu.style.display = "none";
+        tabSection.style.display = "block";
+    }); 
+    menuCloseButton.addEventListener("click", () => {
+        menu.style.display = "block";
+        tabSection.style.display = "none";
+    });
 
     async function displayCarImage(carSelect: HTMLSelectElement, carImage: HTMLImageElement) {
-        const response = await fetch("http://192.168.1.198:5000/top25");
+        const response = await fetch("http://192.168.1.77:5000/top25");
         const cars:Car[] = await response.json();
         const selectedCar = cars.find(car => car.Cars === carSelect.value);
         if (selectedCar) {
@@ -196,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(car2);
 
         if (car1 && car2 && car1 !== car2) {
-            const response = await fetch("http://192.168.1.198:5000/updateELO", {
+            const response = await fetch("http://192.168.1.77:5000/updateELO", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -233,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const password = (<HTMLInputElement>document.getElementById("password")).value;
         console.log(username);
         // send the request with the above data to the flask sever
-        const authResponse = fetch("http://192.168.1.198:5000/auth", {
+        const authResponse = fetch("http://192.168.1.77:5000/auth", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
